@@ -10,16 +10,16 @@
         <div class="card-header"><h3>Realizar Pergunta</h3></div>
         <div class="card-body">
           <form action="/ask-a-question" method="POST">
-            <label>Titúlo</label>
+            <label class="form-label">Título</label>
             <input
               type="text"
               name="title"
               id="title"
-              placeholder="Titúlo"
+              placeholder="Título"
               class="form-control"
             />
 
-            <label class="gap-top">Descrição</label>
+            <label class="form-label gap-top">Descrição</label>
             <textarea
               name="description"
               id="description"
@@ -27,7 +27,7 @@
               rows="10"
               placeholder="Descreva sua pergunta"
               class="form-control"
-              rows="2"
+              rows="3"
             ></textarea>
             <br />
             <button class="btn btn-dark btn-lg gap-top">Perguntar</button>
