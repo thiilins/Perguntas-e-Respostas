@@ -2,12 +2,19 @@
 const { Question } = require("../models");
 const MainController = {
   async index(req, res) {
-    const questionList = await Question.findAll();
-    console.log(questionList);
-    res.render("index", { questionList });
+    //Inicio dos Filtros
+    const { filterBy, orderBy } = req.query;
+    console.log({ filterBy, orderBy });
+    const filterItem = filterBy !== undefined ? filterBy : "id";
+    const filterOder = orderBy !== undefined ? orderBy : "DESC";
+    //Fim dos Filtros
+    const questionList = await Question.findAll({
+      order: [[filterItem, filterOder]],
+    });
+    res.render("index", { questionList, title: "Perguntas" });
   },
   askView(req, res) {
-    res.render("ask", { title: "Realizar Perguntas" });
+    res.render("ask", { title: "Adicionar Pergunta" });
   },
   async ask(req, res) {
     const { title, description } = req.body;
@@ -17,6 +24,10 @@ const MainController = {
     });
     res.redirect("/");
   },
-  async listQuestions(req, res) {},
+  async question(req, res) {
+    const { id } = req.params;
+    const question = await Question.findByPk(id);
+    res.render("question", { title: question.title, question });
+  },
 };
 module.exports = MainController;

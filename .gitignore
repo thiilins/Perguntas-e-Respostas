@@ -52,6 +52,7 @@ node_modules/
 log/
 dist/
 .pnp/
+notes/
 
 # Temporary files #
 ###################
@@ -104,3 +105,4 @@ yarn-error.log*
 
 # vercel
 .vercel
+

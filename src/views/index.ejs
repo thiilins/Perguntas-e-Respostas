@@ -3,8 +3,8 @@
   <%- include('./components/head'); %>
   <body>
     <%- include('./components/navbar'); %>
-    <div class="container">
-      <main class="d-grid gap-3 gap-top gap-bottom">
+    <main class="container">
+      <div class="d-grid gap-3 gap-top gap-bottom">
         <% questionList.forEach((question)=>{ %>
         <section class="col">
           <div class="card">
@@ -20,14 +20,17 @@
                 Intl.DateTimeFormat().format(question.createdAt)%> | Atualizada
                 em <%= new Intl.DateTimeFormat().format(question.updateAt)%>
               </small>
-              <a href="" class="btn btn-dark"> Visualizar Respostas</a>
+
+              <a href="/question/<%=question.id%>" class="btn btn-dark">
+                Visualizar/Responder
+              </a>
             </div>
           </div>
         </section>
 
         <% }) %>
-      </main>
-    </div>
+      </div>
+    </main>
     <%-include('./components/footer-scripts.ejs'); %>
   </body>
 </html>
