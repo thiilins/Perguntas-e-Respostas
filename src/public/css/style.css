@@ -23,7 +23,12 @@ body {
   border-radius: 0.8rem;
   border-color: var(--background-color-default);
 }
-
+.page-title {
+  width: 65%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 #form-pergunta {
   margin-top: 5vh;
   border-radius: 1rem;
