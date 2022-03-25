@@ -31,5 +31,8 @@ const MainController = {
       ? res.render("question", { title: question.title, question })
       : res.redirect("/");
   },
+  notFound(req, res) {
+    res.redirect("/");
+  },
 };
 module.exports = MainController;
