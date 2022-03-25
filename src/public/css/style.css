@@ -24,6 +24,7 @@ body {
   border-color: var(--background-color-default);
 }
 .page-title {
+  text-align: center;
   width: 65%;
   white-space: nowrap;
   overflow: hidden;
