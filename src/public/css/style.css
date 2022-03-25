@@ -1,0 +1,17 @@
+:root {
+  --background-color-default: #eceff1;
+}
+body {
+  background-color: var(--background-color-default);
+}
+.gap-default {
+  margin: 0.8rem 0;
+}
+.gap-top {
+  margin-top: 0.8rem;
+}
+#form-pergunta {
+  margin-top: 5vh;
+  border-radius: 1rem;
+  border-color: var(--background-color-default);
+}
