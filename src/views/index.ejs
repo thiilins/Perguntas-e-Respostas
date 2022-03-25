@@ -2,7 +2,32 @@
 <html lang="pt-br">
   <%- include('./components/head'); %>
   <body>
-    <%- include('./components/navbar'); %> <%-
-    include('./components/footer-scripts.ejs'); %>
+    <%- include('./components/navbar'); %>
+    <div class="container">
+      <main class="d-grid gap-3 gap-top gap-bottom">
+        <% questionList.forEach((question)=>{ %>
+        <section class="col">
+          <div class="card">
+            <div class="card-header text-white bg-dark">
+              <h4><%=question.title%></h4>
+            </div>
+            <div class="card-body">
+              <p><%=question.description%></p>
+            </div>
+            <div class="card-date-link">
+              <small class="text-muted">
+                Adicionada em <%= new
+                Intl.DateTimeFormat().format(question.createdAt)%> | Atualizada
+                em <%= new Intl.DateTimeFormat().format(question.updateAt)%>
+              </small>
+              <a href="" class="btn btn-dark"> Visualizar Respostas</a>
+            </div>
+          </div>
+        </section>
+
+        <% }) %>
+      </main>
+    </div>
+    <%-include('./components/footer-scripts.ejs'); %>
   </body>
 </html>

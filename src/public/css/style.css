@@ -10,6 +10,20 @@ body {
 .gap-top {
   margin-top: 0.8rem;
 }
+.gap-top {
+  margin-bottom: 0.8rem;
+}
+.card-date-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem;
+}
+.card {
+  border-radius: 0.8rem;
+  border-color: var(--background-color-default);
+}
+
 #form-pergunta {
   margin-top: 5vh;
   border-radius: 1rem;
