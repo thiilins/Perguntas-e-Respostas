@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <%- include('./components/head'); %>
-  <body class="my-body">
+  <body
+    data-prismjs-copy="Copiar"
+    data-prismjs-copy-error="Ops, tente CTRL+C"
+    data-prismjs-copy-success="Copiado!"
+    class="line-numbers"
+  >
     <%- include('./components/navbar'); %>
 
     <main class="container gap-top">
@@ -9,7 +14,7 @@
         <div class="card-header">
           <h3><%=question.title%></h3>
         </div>
-        <div class="card-body"><p><%=question.description%></p></div>
+        <div class="card-body"><p><%-question.description%></p></div>
         <div class="card-footer text-end">
           <small class="text-muted">
             Adicionada em <%= new

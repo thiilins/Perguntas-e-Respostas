@@ -1,3 +1,4 @@
+"use strict";
 module.exports = (connection, DataTypes) => {
   const Question = connection.define(
     "Question",
@@ -22,9 +23,7 @@ module.exports = (connection, DataTypes) => {
     }
   );
   Question.sync()
-    .then(() => {
-      console.log("Sincronização de Tabela Efetuada com Sucesso");
-    })
+    .then(() => {})
     .catch((error) => {
       console.log(error);
     });

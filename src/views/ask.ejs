@@ -35,6 +35,84 @@
         </div>
       </div>
     </div>
+
     <%- include('./components/footer-scripts.ejs'); %>
+    <script src="/js/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+      tinymce.init({
+        selector: "textarea",
+        plugins: [
+          "insertdatetime",
+          "code",
+          "link",
+          "table",
+          "lists",
+          "help",
+          "emoticons",
+          "codesample",
+          "anchor",
+          "charmap",
+        ],
+        toolbar: [
+          {
+            name: "history",
+            items: ["undo", "redo"],
+          },
+          {
+            name: "styles",
+            items: ["styleselect"],
+          },
+          {
+            name: "formatting",
+            items: ["bold", "italic"],
+          },
+          {
+            name: "alignment",
+            items: ["alignleft", "aligncenter", "alignright", "alignjustify"],
+          },
+          {
+            name: "indentation",
+            items: ["outdent", "indent"],
+          },
+          {
+            name: "add-ons",
+            items: [
+              "codesample",
+              "emoticons",
+              "insertdatetime",
+              "charmap",
+              "link",
+              "table",
+              "lists",
+              "anchor",
+              "code",
+              "help",
+            ],
+          },
+        ],
+        code_dialog_width: 300,
+        width: "100%",
+        height: 400,
+        language: "pt_BR",
+        branding: false,
+        skin: "tinymce-5",
+        codesample_global_prismjs: true,
+        
+        codesample_languages: [
+          { text: "HTML/XML", value: "markup" },
+          { text: "JavaScript", value: "javascript" },
+          { text: "CSS", value: "css" },
+          { text: "PHP", value: "php" },
+          { text: "Ruby", value: "ruby" },
+          { text: "Python", value: "python" },
+          { text: "Java", value: "java" },
+          { text: "C", value: "c" },
+          { text: "C#", value: "csharp" },
+          { text: "C++", value: "cpp" },
+          { text: "Git", value: "git" },
+          { text: "JSON", value: "json" },
+        ],
+      });
+    </script>
   </body>
 </html>

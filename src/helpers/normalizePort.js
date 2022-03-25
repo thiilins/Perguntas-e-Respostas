@@ -1,3 +1,4 @@
+"use strict";
 function normalizePort(value) {
   const port = parseInt(value, 10);
   if (isNaN(port)) {

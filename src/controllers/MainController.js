@@ -9,6 +9,7 @@ const MainController = {
     const filterOder = orderBy !== undefined ? orderBy : "DESC";
     //Fim dos Filtros
     const questionList = await Question.findAll({
+      raw: true,
       order: [[filterItem, filterOder]],
     });
     res.render("index", { questionList, title: "Perguntas" });
