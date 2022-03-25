@@ -1,8 +1,6 @@
 "use strict";
 const express = require("express");
 const router = express.Router();
-
-router.get("/", (req, res) => {
-  res.send("hello world");
-});
+const MainController = require("../controllers/MainController");
+router.get("/", MainController.index);
 module.exports = router;
