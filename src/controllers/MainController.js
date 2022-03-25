@@ -27,7 +27,9 @@ const MainController = {
   async question(req, res) {
     const { id } = req.params;
     const question = await Question.findByPk(id);
-    res.render("question", { title: question.title, question });
+    question !== undefined
+      ? res.render("question", { title: question.title, question })
+      : res.redirect("/");
   },
 };
 module.exports = MainController;

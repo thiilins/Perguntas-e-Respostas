@@ -5,5 +5,6 @@ const MainController = require("../controllers/MainController");
 router.get("/", MainController.index);
 router.get("/ask-a-question", MainController.askView);
 router.post("/ask-a-question", MainController.ask);
+router.get("/question", MainController.index);
 router.get("/question/:id", MainController.question);
 module.exports = router;
