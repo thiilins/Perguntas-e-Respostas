@@ -30,7 +30,6 @@
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {
-    "morgan": "^1.10.0",
     "sequelize-cli": "^6.4.1"
   }
 }

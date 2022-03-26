@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const routes = require("./routes");
 const path = require("path");
-const logger = require("morgan");
+
 const methodOverride = require("method-override");
 // Habilitando o View Engine
 app.set("view engine", "ejs");
@@ -15,7 +15,7 @@ app.use(express.static(path.resolve("src", "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
-app.use(logger("dev"));
+
 app.use(routes);
 
 module.exports = app;
