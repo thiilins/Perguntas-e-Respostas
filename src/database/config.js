@@ -1,24 +1,15 @@
 "use strict";
 module.exports = {
   development: {
-    username: "root",
-    password: null,
-    database: "questions_and_answers",
-    host: "127.0.0.1",
-    dialect: "mysql",
+    dialect: "sqlite",
+    storage: "./src/database/database.sqlite",
   },
   test: {
-    username: "root",
-    password: null,
-    database: "questions_and_answers",
-    host: "127.0.0.1",
-    dialect: "mysql",
+    dialect: "sqlite",
+    storage: "./src/database/database.sqlite",
   },
   production: {
-    username: "root",
-    password: null,
-    database: "questions_and_answers",
-    host: "127.0.0.1",
-    dialect: "mysql",
+    dialect: "sqlite",
+    storage: "./src/database/database.sqlite",
   },
 };
