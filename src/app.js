@@ -4,6 +4,7 @@ const app = express();
 const routes = require("./routes");
 const path = require("path");
 const logger = require("morgan");
+const methodOverride = require("method-override");
 // Habilitando o View Engine
 app.set("view engine", "ejs");
 // Definindo a pasta view
@@ -13,6 +14,7 @@ app.use(express.static(path.resolve("src", "public")));
 //Permitindo JSON e Habilitando Recebimento de Forms
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride("_method"));
 app.use(logger("dev"));
 app.use(routes);
 
