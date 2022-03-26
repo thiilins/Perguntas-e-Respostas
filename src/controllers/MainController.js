@@ -9,7 +9,6 @@ const MainController = {
     const filterOder = orderBy !== undefined ? orderBy : "DESC";
     //Fim dos Filtros
     const questionList = await Question.findAll({
-      raw: true,
       order: [[filterItem, filterOder]],
     });
     res.render("index", { questionList, title: "Perguntas" });
@@ -33,6 +32,11 @@ const MainController = {
       : res.redirect("/");
   },
   notFound(req, res) {
+    res.redirect("/");
+  },
+  async deleteQuestion(req, res) {
+    const { id } = req.params;
+    await Question.destroy({ where: { id } });
     res.redirect("/");
   },
 };

@@ -7,4 +7,5 @@ router.get("/ask-a-question", MainController.askView);
 router.post("/ask-a-question", MainController.ask);
 router.get("/question", MainController.notFound);
 router.get("/question/:id", MainController.question);
+router.delete("/question/:id", MainController.deleteQuestion);
 module.exports = router;
