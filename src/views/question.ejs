@@ -10,20 +10,81 @@
     <%- include('./components/navbar'); %>
 
     <main class="container gap-top">
-      <section class="card">
+      <section class="card text-white bg-dark">
         <div class="card-header">
           <h3><%=question.title%></h3>
         </div>
         <div class="card-body"><p><%-question.description%></p></div>
-        <div class="card-footer text-end">
+        <div
+          class="card-footer d-flex justify-content-between align-items-center"
+        >
           <small class="text-muted">
             Adicionada em <%= new
             Intl.DateTimeFormat().format(question.createdAt)%> | Atualizada em
             <%= new Intl.DateTimeFormat().format(question.updateAt)%>
           </small>
+          <div class="card-buttons">
+            <form
+              action="/question<%=question.id%>?method=DELETE"
+              method="POST"
+            >
+              <button class="btn btn-danger" type="submit">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+
+              <a href="#" class="btn btn-primary">
+                <i class="fa-solid fa-thumbs-up"></i>
+              </a>
+            </form>
+          </div>
+        </div>
+      </section>
+      <section class="card text-white bg-dark gap-top">
+        <form action="#" method="POST">
+          <div class="card-header"><h3 class="card-titl">Adicionar uma Resposta</h3></div>
+          <div class="card-body">
+            <textarea
+              name="answer"
+              id="answer"
+              cols="30"
+              rows="3"
+              class="form-control"
+              placeholder="Escreva uma Resposta"
+            ></textarea>
+          </div>
+          <div class="card-footer d-flex justify-content-end">
+            <button type="submit" class="btn btn-dark">
+              <i class="fa-solid fa-pencil"></i> Responder
+            </button>
+          </div>
+        </form>
+      </section>
+      <section class="card bg-dark gap-top">
+        <div class="card-header text-white bg-dark"><h3 class="card-title">Respostas</h3></div>
+        <div class="card-body p-4">
+           <div class="card">
+          <div class="card-body">
+            <p class="card-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at
+              blandit augue. Etiam eu tincidunt magna. Quisque vitae orci vitae
+              massa interdum congue. Aliquam consequat quis ex vel semper.
+              Aenean pellentesque dignissim nibh non mollis. Vestibulum
+              elementum purus in accumsan egestas.
+            </p>
+          </div>
+          <div class="card-footer"> <small class="text-muted">
+            Adicionado em XX/XX/XX 
+                <!-- <small> Adicionada em <%= new
+                Intl.DateTimeFormat().format(question.createdAt)%> 
+                 Atualizada
+                em <%= new Intl.DateTimeFormat().format(question.updateAt)%>
+              </small> -->
+            </div>
+        </div>
         </div>
       </section>
     </main>
-    <%- include('./components/footer-scripts.ejs'); %>
+    <%- include('./components/footer-scripts.ejs'); %> <%-
+    include('./components/tinymce-config.ejs'); %>
   </body>
 </html>
