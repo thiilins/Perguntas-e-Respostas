@@ -22,10 +22,6 @@ module.exports = (connection, DataTypes) => {
       timestamps: true,
     }
   );
-  Answer.sync()
-    .then(() => {})
-    .catch((error) => {
-      console.log(error);
-    });
+  Answer.sync({ force: false });
   return Answer;
 };

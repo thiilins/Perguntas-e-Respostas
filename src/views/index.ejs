@@ -14,8 +14,10 @@
             <div class="card-body">
               <div class="text-description"><%-question.description%></div>
             </div>
-            <div class="card-date-link">
-              <small class="text-muted">
+            <div
+              class="card-footer d-flex justify-content-end justify-content-lg-between align-items-center"
+            >
+              <small class="text-muted d-none d-lg-block">
                 Adicionada em <%= new
                 Intl.DateTimeFormat().format(question.createdAt)%> | Atualizada
                 em <%= new Intl.DateTimeFormat().format(question.updateAt)%>
