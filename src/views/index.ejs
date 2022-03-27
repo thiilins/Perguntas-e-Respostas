@@ -21,7 +21,7 @@
                 em <%= new Intl.DateTimeFormat().format(question.updateAt)%>
               </small>
 
-              <div class="card-buttons">
+              <div class="card-buttons d-none d-lg-block">
                 <a href="/question/<%=question.id%>" class="btn btn-secondary">
                   <i class="fa-solid fa-eye"></i> Visualizar
                 </a>
@@ -30,6 +30,11 @@
                   class="btn btn-dark"
                 >
                   <i class="fa-solid fa-pencil"></i> Responder
+                </a>
+              </div>
+              <div class="card-buttons d-lg-none">
+                <a href="/question/<%=question.id%>" class="btn btn-dark">
+                  <i class="fa-solid fa-eye"> </i>
                 </a>
               </div>
             </div>

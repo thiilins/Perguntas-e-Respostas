@@ -16,14 +16,14 @@
         </div>
         <div class="card-body"><p><%-question.description%></p></div>
         <div
-          class="card-footer d-flex justify-content-between align-items-center"
+          class="card-footer d-flex justify-content-end justify-content-lg-between align-items-center"
         >
-          <small class="text-muted">
+          <small class="text-muted d-none d-lg-block">
             Adicionada em <%= new
             Intl.DateTimeFormat().format(question.createdAt)%> | Atualizada em
             <%= new Intl.DateTimeFormat().format(question.updateAt)%>
           </small>
-          <div class="card-buttons">
+          <div class="card-buttons ">
             <form
               action="/question<%=question.id%>?method=DELETE"
               method="POST"
