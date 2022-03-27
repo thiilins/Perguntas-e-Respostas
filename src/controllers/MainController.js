@@ -4,7 +4,6 @@ const MainController = {
   async index(req, res) {
     //Inicio dos Filtros
     const { filterBy, orderBy } = req.query;
-    console.log({ filterBy, orderBy });
     const filterItem = filterBy !== undefined ? filterBy : "id";
     const filterOder = orderBy !== undefined ? orderBy : "DESC";
     //Fim dos Filtros
