@@ -3,10 +3,38 @@
 }
 body {
   background-color: var(--background-color-default);
-  height: 100%;
 }
 main.container {
   min-height: 80vh;
+}
+#not-found-icon {
+  font-size: 10rem;
+  font-weight: bold;
+  padding: 0.8rem 0;
+  text-align: center;
+}
+#not-found-title {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+#not-found-text {
+  max-width: 60vh;
+  text-align: center;
+  padding: 1.5rem 0;
+}
+#not-found-btns {
+  display: flex;
+  gap: 2;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 506px) {
+  #not-found-btns {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+  }
 }
 footer {
   position: static;
