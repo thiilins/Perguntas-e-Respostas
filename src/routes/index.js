@@ -7,8 +7,7 @@ const answerRoutes = require("./AnswerRoutes");
 router.use("/", mainRoutes);
 router.use("/question", questionRoutes);
 router.use("/answer", answerRoutes);
-
-router.use(function (req, res, next) {
-  res.status(404).render("404", { title: "404 - Página Não Encontrada" });
+router.use((req, res, next) => {
+  res.status(404).render("error-404", { title: "404 - Página Não Encontrada" });
 });
 module.exports = router;

@@ -7,23 +7,28 @@ body {
 main.container {
   min-height: 80vh;
 }
-#not-found-icon {
+#not-found-icon,
+#bad-request-icon {
   font-size: 10rem;
   font-weight: bold;
   padding: 0.8rem 0;
   text-align: center;
 }
-#not-found-title {
+#not-found-title,
+#bad-request-title,
+#bad-request-subtitle {
   text-align: center;
   text-transform: uppercase;
   font-weight: bold;
 }
-#not-found-text {
+#not-found-text,
+#bad-request-text {
   max-width: 60vh;
   text-align: center;
   padding: 1.5rem 0;
 }
-#not-found-btns {
+#not-found-btns,
+#bad-request-btns {
   display: flex;
   gap: 2;
   flex-wrap: wrap;

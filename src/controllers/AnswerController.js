@@ -2,19 +2,27 @@
 const { Answer } = require("../models");
 const AnswerController = {
   async addAnswer(req, res) {
-    const { questionID } = req.params;
-    const { content } = req.body;
-    await Answer.create({
-      content,
-      question_id: questionID,
-    });
-    res.redirect(`/question/view/${questionID}`);
+    try {
+      const { questionID } = req.params;
+      const { content } = req.body;
+      await Answer.create({
+        content,
+        question_id: questionID,
+      });
+      res.redirect(`/question/view/${questionID}`);
+    } catch (error) {
+      res.status(400).redirect("/400");
+    }
   },
   async deleteAAnswer(req, res) {
-    const { id } = req.params;
-    const { questionID } = req.body;
-    await Answer.destroy({ where: { id } });
-    res.redirect(`/question/view/${questionID}`);
+    try {
+      const { id } = req.params;
+      const { questionID } = req.body;
+      await Answer.destroy({ where: { id } });
+      res.redirect(`/question/view/${questionID}`);
+    } catch (error) {
+      res.status(400).redirect("/400");
+    }
   },
 };
 module.exports = AnswerController;

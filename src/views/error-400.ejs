@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <%- include('./components/head'); %>
+  <body id="myBody">
+    <%- include('./components/navbar'); %>
+    <main class="container">
+      <div
+        class="d-flex flex-column align-items-center justify-content-center py-5"
+      >
+        <i
+          class="fa-solid fa-triangle-exclamation text-muted"
+          id="bad-request-icon"
+        ></i>
+        <h2 class="card-text text-muted" id="bad-request-title">
+          400 - Bad Request!
+        </h2>
+        <h3 class="card-text text-muted" id="bad-request-subtitle">
+          Ops! Houve um erro ao processar sua solicitação!
+        </h3>
+        <p class="bad-request-text">Por favor tente novamente!</p>
+
+        <div id="bad-request-btns">
+          <a href="/question/add" class="btn btn-lg btn-secondary mx-2">
+            <i class="fa-solid fa-file-circle-question"> </i> Adicionar Pergunta
+          </a>
+          <a href="/" class="btn btn-lg btn-dark mx-2">
+            <i class="fa-solid fa-house"></i> Voltar Para Home
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <%-include('./components/footer.ejs'); %>
+  </body>
+</html>
