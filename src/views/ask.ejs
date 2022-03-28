@@ -8,7 +8,12 @@
       <br />
       <div class="card" id="form-pergunta">
         <div class="card-body">
-          <form action="/ask-a-question" method="POST">
+          <form
+            action="/ask-a-question"
+            method="POST"
+            onSubmit="return validate();"
+            name="ask"
+          >
             <label class="form-label">Título</label>
             <input
               type="text"
@@ -35,7 +40,28 @@
       </div>
     </div>
 
-    <%- include('./components/footer-scripts.ejs'); %>
-   <%- include('./components/tinymce-config.ejs'); %>
+    <%- include('./components/footer-scripts.ejs'); %> <%-
+    include('./components/tinymce-config.ejs'); %> <%-
+    include('./components/show-alert.ejs'); %>
+    <script language="JavaScript">
+      let minimum = 3;
+      function validate() {
+        if (document.ask.title.value.length < minimum) {
+          showAlert(
+            `Seu titúlo deve ter mais que ${minimum} caracteres`,
+            "danger"
+          );
+          return false;
+        }
+        if (document.ask.description.value.length < minimum) {
+          showAlert(
+            `Sua Pergunta deve ter mais que ${minimum} caracteres`,
+            "danger"
+          );
+          return false;
+        }
+        return true;
+      }
+    </script>
   </body>
 </html>
