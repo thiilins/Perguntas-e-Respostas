@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <%- include('./components/head'); %>
-  <body>
+  <body id="myBody">
     <%- include('./components/navbar'); %>
     <main class="container">
       <div class="d-grid gap-3 gap-top gap-bottom">
-        <% questionList.forEach((question)=>{ %>
+        <!--  Iniciando listagem de Perguntas -->
+        <%if(questionList.length <= 0) {%>
+        <div
+          class="d-flex flex-column align-items-center justify-content-center py-5"
+        >
+          <i
+            class="fa-solid fa-code text-muted py-5"
+            style="font-size: 6rem"
+          ></i>
+          <h3 class="card-text text-muted">Nenhuma Pergunta Encontrada!</h3>
+          <a href="/question/add" class="btn btn-lg btn-outline-secondary my-5">
+            <i class="fa-solid fa-file-circle-question"> </i> Adicionar Pergunta
+          </a>
+        </div>
+        <%} else {%> <% questionList.forEach((question)=>{ %>
         <section class="col">
           <div class="card">
             <div class="card-header text-white bg-dark">
@@ -24,22 +38,28 @@
               </small>
 
               <div class="card-buttons d-none d-lg-block">
-                <a href="/question/<%=question.id%>" class="btn btn-secondary">
+                <a
+                  href="/question/view/<%=question.id%>"
+                  class="btn btn-secondary"
+                >
                   <i class="fa-solid fa-eye"></i> Visualizar
                 </a>
                 <a
-                  href="/question/<%=question.id%>#answer"
+                  href="/question/view/<%=question.id%>#answer"
                   class="btn btn-dark"
                 >
                   <i class="fa-solid fa-pencil"></i> Responder
                 </a>
               </div>
               <div class="card-buttons d-lg-none">
-                <a href="/question/<%=question.id%>" class="btn btn-secondary">
+                <a
+                  href="/question/view/<%=question.id%>"
+                  class="btn btn-secondary"
+                >
                   <i class="fa-solid fa-eye"></i>
                 </a>
                 <a
-                  href="/question/<%=question.id%>#answer"
+                  href="/question/view/<%=question.id%>#answer"
                   class="btn btn-dark"
                 >
                   <i class="fa-solid fa-pencil"> </i>
@@ -49,9 +69,11 @@
           </div>
         </section>
 
-        <% }) %>
+        <% }) %> <%}%>
+        <!--  Finalizando Listagem de Perguntas -->
       </div>
     </main>
-    <%-include('./components/footer-scripts.ejs'); %>
+
+    <%-include('./components/footer.ejs'); %>
   </body>
 </html>

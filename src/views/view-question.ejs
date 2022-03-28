@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <%- include('./components/head'); %>
+  <body
+    data-prismjs-copy="Copiar"
+    data-prismjs-copy-error="Ops, tente CTRL+C"
+    data-prismjs-copy-success="Copiado!"
+    class="line-numbers"
+  >
+    <%- include('./components/navbar'); %>
+
+    <main class="container gap-top">
+      <section class="card text-white bg-dark">
+        <div class="card-header">
+          <h3><%=question.title%></h3>
+        </div>
+        <div class="card-body"><p><%-question.description%></p></div>
+        <div
+          class="card-footer d-flex justify-content-end justify-content-lg-between align-items-center"
+        >
+          <small class="text-muted d-none d-lg-block">
+            Adicionada em <%= new
+            Intl.DateTimeFormat().format(question.createdAt)%> | Atualizada em
+            <%= new Intl.DateTimeFormat().format(question.updateAt)%>
+          </small>
+          <div class="card-buttons d-flex">
+            <form
+              action="/question/delete/<%=question.id%>?_method=DELETE"
+              method="POST"
+            >
+              <button class="btn btn-danger" type="submit">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </form>
+            <button class="btn btn-primary mx-2 disabled">
+              <i class="fa-solid fa-thumbs-up"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+      <section id="answer" class="card text-white bg-dark gap-top">
+        <form
+          action="/answer/add/<%=question.id%>"
+          method="POST"
+          name="answer"
+          onSubmit="return validate();"
+        >
+          <div class="card-header">
+            <h3 class="card-title gap-top">Adicionar uma Resposta</h3>
+          </div>
+          <div class="card-body">
+            <div id="liveAlert"></div>
+            <textarea
+              minlength="20"
+              name="content"
+              id="content"
+              cols="30"
+              rows="3"
+              class="form-control"
+              placeholder="Escreva uma Resposta"
+            ></textarea>
+          </div>
+          <div class="card-footer d-flex justify-content-end">
+            <button type="submit" class="btn btn-light">
+              <i class="fa-solid fa-pencil"></i> Responder
+            </button>
+          </div>
+        </form>
+      </section>
+      <section class="card bg-dark gap-top">
+        <div class="card-header text-white bg-dark">
+          <h3 class="card-title gap-top">Respostas</h3>
+        </div>
+        <div class="card-body p-4">
+          <div class="card">
+            <div class="card-body">
+              <!-- Iniciando listagem de respostas -->
+              <%if(question.answers.length <= 0){%>
+              <div
+                class="no-content d-flex flex-column align-items-center py-5"
+              >
+                <i
+                  class="fa-solid fa-code text-muted py-2"
+                  style="font-size: 4rem"
+                ></i>
+                <p class="card-text text-muted">
+                  Não existe nenhuma resposta ainda para essa pergunta!
+                </p>
+              </div>
+
+              <%}else{%> <% question.answers.forEach((answer)=>{ %>
+              <p class="card-text"><%-answer.content%></p>
+              <div class="d-flex justify-content-end">
+                <form
+                  action="/answer/delete/<%=answer.id%>?_method=DELETE"
+                  method="POST"
+                >
+                  <input
+                    type="hidden"
+                    name="questionID"
+                    value="<%=question.id%>"
+                  />
+                  <button type="submit" class="btn btn-danger">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </form>
+                <hr />
+              </div>
+
+              <% })%> <%}%>
+              <!-- Finalizando listagem de respostas -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <%- include('./components/footer-scripts.ejs'); %>
+    <%-include('./components/footer.ejs'); %> <%-
+    include('./components/tinymce-config.ejs'); %> <%-
+    include('./components/show-alert.ejs'); %>
+    <script language="JavaScript">
+      let minimum = 3;
+      function validate() {
+        if (document.answer.content.value.length < minimum) {
+          showAlert(
+            `<i class="fa-solid fa-triangle-exclamation "></i> Sua Resposta deve ter mais que ${minimum} caracteres`,
+            "danger"
+          );
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <%- include('./components/head'); %>
+  <body class="my-body">
+    <%- include('./components/navbar'); %>
+
+    <main class="container">
+      <br />
+      <div class="card bg-dark text-white" id="form-pergunta">
+        <form
+          action="/question/add"
+          method="POST"
+          name="makeAQuestion"
+          onSubmit="return validate();"
+        >
+          <div class="card-body">
+            <div id="liveAlert"></div>
+            <label class="form-label">Título</label>
+            <input
+              type="text"
+              class="form-control"
+              name="title"
+              id="title"
+              placeholder="Título"
+            />
+
+            <label from="description" class="form-label gap-top">
+              Descrição
+            </label>
+
+            <textarea
+              name="description"
+              id="description"
+              cols="30"
+              rows="10"
+              placeholder="Descreva sua pergunta"
+              class="form-control"
+            ></textarea>
+            <br />
+            <div class="card-footer d-flex justify-content-end">
+              <button type="submit" class="btn btn-light">
+                <i class="fa-solid fa-check"></i> Perguntar
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+    <%-include('./components/footer.ejs'); %> <%-
+    include('./components/tinymce-config.ejs'); %> <%-
+    include('./components/show-alert.ejs'); %>
+    <script language="JavaScript">
+      function validate() {
+        if (document.makeAQuestion.title.value.length < 15) {
+          showAlert(
+            `<i class="fa-solid fa-triangle-exclamation "></i> O titulo deve ter mais que 15 caracteres`,
+            "danger"
+          );
+          return false;
+        } else if (document.makeAQuestion.description.value.length < 20) {
+          showAlert(
+            `<i class="fa-solid fa-triangle-exclamation "></i> Sua Pergunta deve ter mais que 20 caracteres`,
+            "danger"
+          );
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </body>
+</html>
