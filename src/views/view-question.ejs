@@ -67,51 +67,44 @@
           </div>
         </form>
       </section>
-      <section class="card bg-dark gap-top">
+      <section class="card bg-dark gap-top p-4">
         <div class="card-header text-white bg-dark">
           <h3 class="card-title gap-top">Respostas</h3>
         </div>
-        <div class="card-body p-4">
-          <div class="card">
-            <div class="card-body">
-              <!-- Iniciando listagem de respostas -->
-              <%if(question.answers.length <= 0){%>
-              <div
-                class="no-content d-flex flex-column align-items-center py-5"
-              >
-                <i
-                  class="fa-solid fa-code text-muted py-2"
-                  style="font-size: 4rem"
-                ></i>
-                <p class="card-text text-muted">
-                  Não existe nenhuma resposta ainda para essa pergunta!
-                </p>
-              </div>
 
-              <%}else{%> <% question.answers.forEach((answer)=>{ %>
-              <p class="card-text"><%-answer.content%></p>
-              <div class="d-flex justify-content-end">
-                <form
-                  action="/answer/delete/<%=answer.id%>?_method=DELETE"
-                  method="POST"
-                >
-                  <input
-                    type="hidden"
-                    name="questionID"
-                    value="<%=question.id%>"
-                  />
-                  <button type="submit" class="btn btn-danger">
-                    <i class="fa-solid fa-trash"></i>
-                  </button>
-                </form>
-                <hr />
-              </div>
-
-              <% })%> <%}%>
-              <!-- Finalizando listagem de respostas -->
+        <!-- Iniciando listagem de respostas -->
+        <%if(question.answers.length <= 0){%>
+        <div class="card">
+          <div class="card-body">
+            <div class="no-content d-flex flex-column align-items-center py-5">
+              <i
+                class="fa-solid fa-code text-muted py-2"
+                style="font-size: 4rem"
+              ></i>
+              <p class="card-text text-muted">
+                Não existe nenhuma resposta ainda para essa pergunta!
+              </p>
             </div>
           </div>
         </div>
+        <%}else{%> <% question.answers.forEach((answer)=>{ %>
+        <div class="card p-4 gap-top">
+          <p class="card-text"><%-answer.content%></p>
+          <div class="d-flex justify-content-end">
+            <form
+              action="/answer/delete/<%=answer.id%>?_method=DELETE"
+              method="POST"
+            >
+              <input type="hidden" name="questionID" value="<%=question.id%>" />
+              <button type="submit" class="btn btn-danger">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </form>
+            <hr />
+          </div>
+        </div>
+        <% })%> <%}%>
+        <!-- Finalizando listagem de respostas -->
       </section>
     </main>
     <%- include('./components/footer-scripts.ejs'); %>
