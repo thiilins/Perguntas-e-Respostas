@@ -13,7 +13,7 @@ const QuestionController = {
       });
       res.redirect(`/question/view/${newQuestion.id}`);
     } catch (error) {
-      res.status(400).redirect("/400");
+      res.status(400).redirect("/error-400");
     }
   },
   async viewQuestion(req, res) {
@@ -32,7 +32,7 @@ const QuestionController = {
       });
       res.render("view-question", { title: question.title, question });
     } catch (error) {
-      res.status(404).redirect("/404");
+      res.status(400).redirect("/error-400");
     }
   },
 
@@ -42,7 +42,7 @@ const QuestionController = {
       await Question.destroy({ where: { id } });
       res.redirect("/");
     } catch (error) {
-      res.status(400).redirect("/400");
+      res.status(400).redirect("/error-400");
     }
   },
 };

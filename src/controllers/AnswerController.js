@@ -11,7 +11,7 @@ const AnswerController = {
       });
       res.redirect(`/question/view/${questionID}`);
     } catch (error) {
-      res.status(400).redirect("/400");
+      res.status(400).redirect("/error-400");
     }
   },
   async deleteAAnswer(req, res) {
@@ -21,7 +21,7 @@ const AnswerController = {
       await Answer.destroy({ where: { id } });
       res.redirect(`/question/view/${questionID}`);
     } catch (error) {
-      res.status(400).redirect("/400");
+      res.status(400).redirect("/error-400");
     }
   },
 };

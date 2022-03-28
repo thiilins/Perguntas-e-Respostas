@@ -13,7 +13,7 @@ const MainController = {
       });
       res.render("index", { questionList, title: "Perguntas" });
     } catch (error) {
-      res.status(400).redirect("/400");
+      res.status(400).redirect("/error-400");
     }
   },
 };
