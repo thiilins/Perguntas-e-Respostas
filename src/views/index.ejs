@@ -37,32 +37,20 @@
                 em <%= new Intl.DateTimeFormat().format(question.updateAt)%>
               </small>
 
-              <div class="card-buttons d-none d-lg-block">
-                <a
-                  href="/question/view/<%=question.id%>"
-                  class="btn btn-secondary"
-                >
-                  <i class="fa-solid fa-eye"></i> Visualizar
-                </a>
-                <a
-                  href="/question/view/<%=question.id%>#answer"
-                  class="btn btn-dark"
-                >
-                  <i class="fa-solid fa-pencil"></i> Responder
-                </a>
-              </div>
-              <div class="card-buttons d-lg-none">
+              <div class="card-buttons">
                 <a
                   href="/question/view/<%=question.id%>"
                   class="btn btn-secondary"
                 >
                   <i class="fa-solid fa-eye"></i>
+                  <span class="d-none d-sm-inline">Visualizar</span>
                 </a>
                 <a
                   href="/question/view/<%=question.id%>#answer"
                   class="btn btn-dark"
                 >
-                  <i class="fa-solid fa-pencil"> </i>
+                  <i class="fa-solid fa-pencil"></i>
+                  <span class="d-none d-sm-inline">Responder</span>
                 </a>
               </div>
             </div>
