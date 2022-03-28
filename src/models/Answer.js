@@ -8,7 +8,7 @@ module.exports = (connection, DataTypes) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      answer: {
+      content: {
         type: DataTypes.TEXT,
         allowNull: false,
       },
@@ -22,6 +22,13 @@ module.exports = (connection, DataTypes) => {
       timestamps: true,
     }
   );
+  Answer.associate = (models) => {
+    Answer.belongsTo(models.Question, {
+      foreignKey: "question_id",
+      as: "question",
+      onDelete: "cascade",
+    });
+  };
   Answer.sync({ force: false });
   return Answer;
 };

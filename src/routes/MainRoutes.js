@@ -8,4 +8,5 @@ router.post("/ask-a-question", MainController.ask);
 router.get("/question", MainController.notFound);
 router.get("/question/:id", MainController.question);
 router.delete("/question/:id", MainController.deleteQuestion);
+router.post("/answer/:questionID", MainController.answer)
 module.exports = router;

@@ -22,6 +22,13 @@ module.exports = (connection, DataTypes) => {
       timestamps: true,
     }
   );
+  Question.associate = (models) => {
+    Question.hasMany(models.Answer, {
+      foreignKey: "question_id",
+      as: "answers",
+      onDelete: "cascade",
+    });
+  };
   Question.sync({ force: false });
 
   return Question;

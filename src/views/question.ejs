@@ -23,7 +23,7 @@
             Intl.DateTimeFormat().format(question.createdAt)%> | Atualizada em
             <%= new Intl.DateTimeFormat().format(question.updateAt)%>
           </small>
-          <div class="card-buttons ">
+          <div class="card-buttons">
             <form
               action="/question/<%=question.id%>?_method=DELETE"
               method="POST"
@@ -40,12 +40,14 @@
         </div>
       </section>
       <section id="answer" class="card text-white bg-dark gap-top">
-        <form action="#" method="POST">
-          <div class="card-header"><h3 class="card-titl">Adicionar uma Resposta</h3></div>
+        <form action="/answer/<%=question.id%>" method="POST">
+          <div class="card-header">
+            <h3 class="card-titl">Adicionar uma Resposta</h3>
+          </div>
           <div class="card-body">
             <textarea
-              name="answer"
-              id="answer"
+              name="content"
+              id="content"
               cols="30"
               rows="3"
               class="form-control"
@@ -60,27 +62,23 @@
         </form>
       </section>
       <section class="card bg-dark gap-top">
-        <div class="card-header text-white bg-dark"><h3 class="card-title">Respostas</h3></div>
-        <div class="card-body p-4">
-           <div class="card">
-          <div class="card-body">
-            <p class="card-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at
-              blandit augue. Etiam eu tincidunt magna. Quisque vitae orci vitae
-              massa interdum congue. Aliquam consequat quis ex vel semper.
-              Aenean pellentesque dignissim nibh non mollis. Vestibulum
-              elementum purus in accumsan egestas.
-            </p>
-          </div>
-          <div class="card-footer"> <small class="text-muted">
-            Adicionado em XX/XX/XX 
-                <!-- <small> Adicionada em <%= new
-                Intl.DateTimeFormat().format(question.createdAt)%> 
-                 Atualizada
-                em <%= new Intl.DateTimeFormat().format(question.updateAt)%>
-              </small> -->
-            </div>
+        <div class="card-header text-white bg-dark">
+          <h3 class="card-title">Respostas</h3>
         </div>
+        <div class="card-body p-4">
+          <div class="card">
+            <div class="card-body">
+              <% question.answers.forEach((answer)=>{ %>
+              <p class="card-text"><%-answer.content%></p>
+              <small class="d-flex justify-content-end gap-bottom">
+                Adicionada em <%= new
+                Intl.DateTimeFormat().format(answer.createdAt)%> | Atualizada em
+                <%= new Intl.DateTimeFormat().format(answer.updateAt)%>
+              </small>
+              <hr />
+              <% })%>
+            </div>
+          </div>
         </div>
       </section>
     </main>
