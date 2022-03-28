@@ -29,6 +29,6 @@ module.exports = (connection, DataTypes) => {
       onDelete: "cascade",
     });
   };
-  Answer.sync({ force: false });
+  Answer.sync({ force: true });
   return Answer;
 };

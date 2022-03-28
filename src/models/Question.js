@@ -29,7 +29,7 @@ module.exports = (connection, DataTypes) => {
       onDelete: "cascade",
     });
   };
-  Question.sync({ force: false });
+  Question.sync({ force: true });
 
   return Question;
 };
