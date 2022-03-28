@@ -20,7 +20,7 @@
           </a>
         </div>
         <%} else {%> <% questionList.forEach((question)=>{ %>
-        <section class="col">
+        <section>
           <div class="card">
             <div class="card-header text-white bg-dark">
               <h4 class="text-title"><%=question.title%></h4>
@@ -61,7 +61,6 @@
         <!--  Finalizando Listagem de Perguntas -->
       </div>
     </main>
-
     <%-include('./components/footer.ejs'); %>
   </body>
 </html>
